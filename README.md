@@ -42,22 +42,31 @@ When it comes time to fabricate your board, you only have to remove copper from 
 > [!NOTE]
 > Viagrid has templates and instructions for only KiCAD and Eagle at the moment.
 
+
+### KiCAD
+
+1. Download the respective template for the blank you want to design for.
+- [6034](VIAGRID%20%BLANK%20%FILES/6034%20%STANDARD/KICAD/viagrid_6034_template)
+2. Put the folder into the user template folder. 
+You can find it using the env variable `KICAD_USER_TEMPLATE_DIR` or through the Path configurator 
+at `Preferences > Configure Paths...`.
+3. Done! You can now use the `File > New Project from Template...` to create a new project with the viagrid template.
+
+
 ## Design
 
-1. Design your schematic in KiCAD like you usually would. Assign footprints.
-2. Before opening the .kicad_pcb file associated with your project, copy the `viagrid-template.kicad_pcb` file into your KiCAD project directory, and rename it to replace the default one.
-3. Open the newly renamed `.kicad_pcb` file in KiCAD. The `User1` layer shows the location of the vias on the Viagrid blank, and the outer bounds of the usable area.
-4. Set your board settings for best results:
-   1. Vias: 1.5mm ring, 0.3mm drill
-   2. Traces: no smaller than 0.2mm
-   3. Copper pour: at least 0.3mm clearance
-5. Route your board like you normally would.
+### KiCAD
 
-## File Export
+1. Create a new project using one of the templates installed previously.
+2. Design your schematic like you normally would.
+3. Set the recommended values for the manufacturing process you want to use. e.g. CNC, Laser, Etching.
+4. Lay everything out and route everything. 
 
-1. File -> Plot
-2. When exporting, we only care about the front and back copper layers, and the front and back mask layers. Select these.
-3. Export files as .DXF
+#### Tips
+- You dont have to delete the vias and recreate them. Just select them, press `E` and select the net you want to assign to it.
+- A ground zone around your top and bottom layer is recommended, this way the vias are connected on both sides
+and the DRC doesn't complain about every single unconnected via as they are now connected to the ground zone.
+- If you want to share your design on viagrid.io you need to enable `Use Protel filename extensions`. You also have to check the `Edge_Cuts` layer under the "Plot on all layers" menu.
 
 ## Fabrication Methods
 
