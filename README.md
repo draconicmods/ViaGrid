@@ -6,8 +6,9 @@ ViaGrid is a set of standardized PCB blank templates with pre-embedded vias in g
 > [!NOTE]
 > Viagrid is still in development and is constantly evolving! If you wish to start creating PCBs based on a viagrid template who's status is not Complete in the table below, come and visit the #viagrid channel in the [Opulo Discord](https://discordapp.com/invite/TCwy6De) and ask for the latest version of the template you want to work with!
 >
-<br>**Currently, only the 9055 Standard blank is complete.** Other blank sizes and densities are planned:<br><br>
+<br>**Currently, only the 9055 Standard blank is complete.** Other blank sizes and densities are planned.<br><br>
 
+## ViaGrid Template Table
 | Blank Name  | Status | Vias | Dimensions | Mounting ⌀ | Enclosure | Preview |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
 | [ViaGrid 9055 Standard](https://github.com/opulo-inc/viagrid/tree/main/VIAGRID%20BLANK%20FILES/9055%20STANDARD) | Complete  | 180 | 90 x 55mm | Yes | Hammond 1591XXB Series | [Click Here](VIAGRID%20BLANK%20FILES/9055%20STANDARD/VIAGRID_9055_STANDARD.png) |
@@ -24,7 +25,6 @@ ViaGrid is a set of standardized PCB blank templates with pre-embedded vias in g
 ## Table of Contents
 [File Prep](#file-prep)<br>
 [Design](#design)<br>
-[File Export](#file-export)<br>
 [Fabrication Methods](#fabrication-methods)
 <br><br>
 
@@ -40,33 +40,37 @@ When it comes time to fabricate your board, you only have to remove copper from 
 ## File Prep
 
 > [!NOTE]
-> Viagrid has templates and instructions for only KiCAD and Eagle at the moment.
+> Viagrid has templates and instructions for only KiCAD and Eagle at the moment. If you have made templates or instructions for other PCB software, please get in touch or submit a pull request so we can add them!
 
 
 ### KiCAD
 
-1. Download the respective template for the blank you want to design for.
-- [6034](VIAGRID%20%BLANK%20%FILES/6034%20%STANDARD/KICAD/viagrid_6034_template)
-2. Put the folder into the user template folder. 
-You can find it using the env variable `KICAD_USER_TEMPLATE_DIR` or through the Path configurator 
-at `Preferences > Configure Paths...`.
-3. Done! You can now use the `File > New Project from Template...` to create a new project with the viagrid template.
+1. Download the respective template for the blank you want to design for. Quick links can be found in the [ViaGrid Template Table](#viagrid-template-table).
+2. Place the template folder (eg "viagrid_6034_template") into your KiCAD user template folder. (You can find it quickly using the env variable `KICAD_USER_TEMPLATE_DIR` or through the Path configurator at `Preferences > Configure Paths...`.)
+3. You can now use the `File > New Project from Template...` to quickly create a new project with your new viagrid template.
+
+### EAGLE / F360 For Electronics
+
+Coming soon!
 
 
 ## Design
 
 ### KiCAD
 
-1. Create a new project using one of the templates installed previously.
-2. Design your schematic like you normally would.
-3. Set the recommended values for the manufacturing process you want to use. e.g. CNC, Laser, Etching.
-4. Lay everything out and route everything. 
+1. Create a new project using one of the provided templates. (see [File Prep](#file-prep) for more details.)
+2. Design your schematic as you normally would.
+3. Set the recommended values for the manufacturing process you want to use. e.g. CNC, Laser, Etching. Design rule templates for ViaGrid will be availble soon.
+4. Layout and route your design as normal, making use of the provided vias when signal routing between layers is required.
 
 #### Tips
-- You dont have to delete the vias and recreate them. Just select them, press `E` and select the net you want to assign to it.
-- A ground zone around your top and bottom layer is recommended, this way the vias are connected on both sides
-and the DRC doesn't complain about every single unconnected via as they are now connected to the ground zone.
-- If you want to share your design on viagrid.io you need to enable `Use Protel filename extensions`. You also have to check the `Edge_Cuts` layer under the "Plot on all layers" menu.
+- You don't have to delete and recreate vias manually to switch their nets. Instead, select your via and press `E`, then select the net you want to assign it to.
+- A ground pour for your top and bottom layer is recommended to reduce material removal requirements, improve EMI and ESD characteristics and suppress DRC errors for unused vias.
+- If you plan to share your design on [ViaGrid Community](https://viagrid.io), you need to enable `Use Protel filename extensions`, as well as checking the `Edge_Cuts` layer under the "Plot on all layers" menu.
+
+### EAGLE / F360 For Electronics
+
+Coming soon!
 
 ## Fabrication Methods
 
